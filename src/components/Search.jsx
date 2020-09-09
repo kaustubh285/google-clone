@@ -6,7 +6,11 @@ import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import ClearIcon from "@material-ui/icons/Clear";
 
+import { useStateValue } from "../StateProvider";
+import { actionTypes } from "../reducer";
+
 function Search({ hideButtons }) {
+  const [{}, dispatch] = useStateValue();
   const [searchQuery, setSearchQuery] = useState("");
 
   const history = useHistory();
@@ -14,6 +18,11 @@ function Search({ hideButtons }) {
   const search = (e) => {
     e.preventDefault();
     console.log("searching...");
+
+    dispatch({
+      type: actionTypes.SET_SEARCH_TERM,
+      term: searchQuery,
+    });
 
     history.push("/search");
   };
