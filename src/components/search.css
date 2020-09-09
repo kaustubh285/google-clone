@@ -60,3 +60,16 @@ input[type="text"]:focus {
     width: 75vw;
   }
 }
+
+.search__clearSearch {
+  color: rgba(0, 0, 0, 0.4);
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.search__clearSearch:hover {
+  transform: scale(1.1);
+  color: rgba(0, 0, 0, 0.9);
+}

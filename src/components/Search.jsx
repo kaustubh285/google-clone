@@ -4,6 +4,7 @@ import MicIcon from "@material-ui/icons/Mic";
 import "./search.css";
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import ClearIcon from "@material-ui/icons/Clear";
 
 function Search({ hideButtons }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -26,7 +27,14 @@ function Search({ hideButtons }) {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <MicIcon color='primary' />
+        {searchQuery === "" ? (
+          <MicIcon color='primary' />
+        ) : (
+          <ClearIcon
+            className='search__clearSearch'
+            onClick={() => setSearchQuery("")}
+          />
+        )}
       </div>
       {!hideButtons ? (
         <div className='search__buttons'>
