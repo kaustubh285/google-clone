@@ -30,14 +30,20 @@ function Search({ hideButtons }) {
   return (
     <form className='search'>
       <div className='search__input'>
-        <SearchIcon color='default' className='search__inputIcon' />
+        {!hideButtons && (
+          <SearchIcon color='default' className='search__inputIcon' />
+        )}
         <input
           type='text'
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         {searchQuery === "" ? (
-          <MicIcon color='primary' />
+          !hideButtons ? (
+            <MicIcon color='primary' />
+          ) : (
+            <SearchIcon color='default' className='search__inputIcon' />
+          )
         ) : (
           <ClearIcon
             className='search__clearSearch'

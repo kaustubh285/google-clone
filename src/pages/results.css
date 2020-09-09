@@ -1,0 +1,95 @@
+.searchPage_logo {
+  height: 30px;
+  width: auto;
+  margin-top: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 40px;
+}
+
+.searchPage__header {
+  overflow-x: scroll;
+  display: flex;
+  align-items: flex-start;
+  position: sticky;
+  z-index: 100;
+  border-bottom: 1px solid lightgray;
+  padding: 20px;
+  padding-bottom: 0px;
+  top: 0;
+}
+
+.search__input {
+  margin-top: 0px !important;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.searchPage__header::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.searchPage__header {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.searchPage_bar > .search > .search__input {
+  margin: 0 0 !important;
+  width: 100% !important;
+
+  max-width: unset;
+}
+.search {
+  width: 100% !important;
+}
+
+.searchPage__option {
+  margin-left: 10px;
+  padding-right: 6px;
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+}
+.searchPage_bar {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchPage__optionsLeft {
+  align-items: center;
+  display: flex;
+}
+
+.searchPage__optionsRight {
+  align-items: center;
+  display: flex;
+}
+
+.searchPage__options {
+  min-width: 600px;
+  display: flex;
+  justify-content: space-between;
+}
+.searchPage__options a {
+  font-size: small;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6) !important;
+  text-decoration: none;
+  padding-bottom: 10px;
+}
+
+.selected {
+  border-bottom: 3px solid #1a73e8;
+  color: #1a73e8 !important;
+  text-decoration: none;
+}
+
+.searchPage__option .MuiSvgIcon-root {
+  margin: 2px;
+  color: rgba(0, 0, 0, 0.7) !important;
+  font-size: medium;
+  padding-bottom: 10px;
+}
