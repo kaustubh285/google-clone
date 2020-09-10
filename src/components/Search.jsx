@@ -9,9 +9,9 @@ import ClearIcon from "@material-ui/icons/Clear";
 import { useStateValue } from "../StateProvider";
 import { actionTypes } from "../reducer";
 
-function Search({ hideButtons }) {
+function Search({ hideButtons, term = "" }) {
   const [{}, dispatch] = useStateValue();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(term);
 
   const history = useHistory();
 

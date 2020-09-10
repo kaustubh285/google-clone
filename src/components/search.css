@@ -23,7 +23,7 @@ input[type="text"]:focus {
   height: 30px;
   max-width: 560px !important;
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 40px !important;
 }
 
 .search__input:hover {

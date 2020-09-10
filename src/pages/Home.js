@@ -27,7 +27,7 @@ function Home() {
           alt='Google Logo'
         />
 
-        <div className='home__seachContainer'>
+        <div className='home__seachContainer' style={{ marginTop: 40 }}>
           <Search />
         </div>
       </div>
