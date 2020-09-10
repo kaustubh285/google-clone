@@ -18,11 +18,10 @@ import AppsIcon from "@material-ui/icons/Apps";
 function Results() {
   const [{ term }, dispatch] = useStateValue();
 
-  // const data = useGoogleSearch(term); LIVE
+  var { data } = useGoogleSearch(term);
 
-  const data = Response;
-
-  console.log(data);
+  // Mock
+  // const data = Response;
 
   if (term === "") {
     return <Redirect to='/' />;
@@ -44,7 +43,7 @@ function Results() {
             <Search hideButtons term={term} />
             <div className='searchPage__options'>
               <div className='searchPage__optionsLeft'>
-                <div className='searchPage__option selected '>
+                <div id='all' className='searchPage__option selected '>
                   <div
                     style={{ maxWidth: 16, paddingBottom: 10, marginRight: 3 }}>
                     <span class='' style={{ height: 8, width: 8 }}>
@@ -64,36 +63,36 @@ function Results() {
                       </svg>
                     </span>
                   </div>
-                  <Link to='/all'>All</Link>
+                  <Link>All</Link>
                 </div>
-                <div className='searchPage__option'>
+                <div id='maps' className='searchPage__option'>
                   <RoomOutlinedIcon />
-                  <Link to='/all'>Maps</Link>
+                  <Link>Maps</Link>
                 </div>
-                <div className='searchPage__option '>
+                <div id='news' className='searchPage__option '>
                   <DescriptionOutlinedIcon />
-                  <Link to='/all'>News</Link>
+                  <Link>News</Link>
                 </div>
-                <div className='searchPage__option'>
+                <div id='images' className='searchPage__option'>
                   <ImageOutlinedIcon />
-                  <Link to='/all'>Images</Link>
+                  <Link>Images</Link>
                 </div>
-                <div className='searchPage__option'>
+                <div id='shopping' className='searchPage__option'>
                   <LocalOfferOutlinedIcon />
-                  <Link to='/all'>Shopping</Link>
+                  <Link>Shopping</Link>
                 </div>
                 <div className='searchPage__option'>
                   <MoreVertIcon />
-                  <Link to='/all'>More</Link>
+                  <Link>More</Link>
                 </div>
               </div>
 
               <div className='searchPage__optionsRight'>
                 <div className='searchPage__option'>
-                  <Link to='/all'>Settings</Link>
+                  <Link>Settings</Link>
                 </div>
                 <div className='searchPage__option'>
-                  <Link to='/all'>Tools</Link>
+                  <Link>Tools</Link>
                 </div>
               </div>
             </div>
@@ -104,36 +103,42 @@ function Results() {
           <AccountCircleSharpIcon className='avatar' />
         </div>
       </div>
-      {term && (
-        <div className='searchPage__results'>
-          <p className='searchPage__resultsCount'>
-            About {data.searchInformation.formattedTotalResults} results (
-            {data.searchInformation.formattedSearchTime} seconds) for {term}
+
+      <div className='searchPage__results'>
+        {!data && (
+          <p style={{ color: "red" }}>
+            Sorry, the API limit has been reached. Here is the results for
+            sample query.
           </p>
+        )}
 
-          {data?.items.map((item) => (
-            <div className='searchPage__result'>
-              <a className='searchPage__resultsTitle' href={item.link}>
-                <p>{item.title}</p>
-              </a>
-              <a className='searchPage__resultsLink' href={item.link}>
-                {item.pagemap?.cse_image?.length > 0 &&
-                  item.pagemap?.cse_image[0]?.src && (
-                    <img
-                      className='searchPage__resultsImage'
-                      src={item.pagemap?.cse_image[0]?.src}
-                      alt=''
-                    />
-                  )}
-                {item.displayLink}
-                <span style={{ fontSize: 10, marginBottom: 2 }}>&#9660; </span>
-              </a>
+        <p className='searchPage__resultsCount'>
+          About {data?.searchInformation?.formattedTotalResults} results (
+          {data?.searchInformation?.formattedSearchTime} seconds) for {term}
+        </p>
 
-              <p className='searchPage__resultsSnippet'>{item.snippet}</p>
-            </div>
-          ))}
-        </div>
-      )}
+        {data?.items.map((item) => (
+          <div className='searchPage__result'>
+            <a className='searchPage__resultsTitle' href={item.link}>
+              <p>{item.title}</p>
+            </a>
+            <a className='searchPage__resultsLink' href={item.link}>
+              {item.pagemap?.cse_image?.length > 0 &&
+                item.pagemap?.cse_image[0]?.src && (
+                  <img
+                    className='searchPage__resultsImage'
+                    src={item.pagemap?.cse_image[0]?.src}
+                    alt=''
+                  />
+                )}
+              {item.displayLink}
+              <span style={{ fontSize: 10, marginBottom: 2 }}>&#9660; </span>
+            </a>
+
+            <p className='searchPage__resultsSnippet'>{item.snippet}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

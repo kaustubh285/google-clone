@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import API_KEY from "./keys";
+import Response from "./response";
 
 const CONTEXT_KEY = "41638c30146418c69";
 
 const useGoogleSearch = (term) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(Response);
 
   useEffect(() => {
     const fetchData = async () => {
