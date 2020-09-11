@@ -15,6 +15,7 @@ input[type="text"]:focus {
 
 .search__input {
   width: 37vw;
+  min-width: 300px;
   display: flex;
   align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -23,7 +24,7 @@ input[type="text"]:focus {
   height: 30px;
   max-width: 560px !important;
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 40px !important;
 }
 
 .search__input:hover {
@@ -63,7 +64,7 @@ input[type="text"]:focus {
   display: none !important;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
   .search__input {
     width: 75vw;
   }

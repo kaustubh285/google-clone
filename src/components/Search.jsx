@@ -9,15 +9,15 @@ import ClearIcon from "@material-ui/icons/Clear";
 import { useStateValue } from "../StateProvider";
 import { actionTypes } from "../reducer";
 
-function Search({ hideButtons }) {
+function Search({ hideButtons, term = "" }) {
+  // eslint-disable-next-line
   const [{}, dispatch] = useStateValue();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(term);
 
   const history = useHistory();
 
   const search = (e) => {
     e.preventDefault();
-    console.log("searching...");
 
     dispatch({
       type: actionTypes.SET_SEARCH_TERM,
@@ -30,14 +30,20 @@ function Search({ hideButtons }) {
   return (
     <form className='search'>
       <div className='search__input'>
-        <SearchIcon color='default' className='search__inputIcon' />
+        {!hideButtons && (
+          <SearchIcon color='default' className='search__inputIcon' />
+        )}
         <input
           type='text'
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         {searchQuery === "" ? (
-          <MicIcon color='primary' />
+          !hideButtons ? (
+            <MicIcon color='primary' />
+          ) : (
+            <SearchIcon color='default' className='search__inputIcon' />
+          )
         ) : (
           <ClearIcon
             className='search__clearSearch'

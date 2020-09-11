@@ -9,7 +9,7 @@
 .home {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 89vh;
 }
 
 .home__header a {
@@ -74,4 +74,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.author {
+  border-top: 1px solid lightgray;
+}
+
+.author > a > p {
+  float: right;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+@media only screen and (min-width: 500px) {
+  .home {
+    display: flex;
+    flex-direction: column;
+    height: 96vh !important;
+  }
+  .author > a > p {
+    float: right;
+    padding: 5px !important;
+    margin: 0 !important;
+  }
 }
