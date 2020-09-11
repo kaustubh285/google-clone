@@ -1,0 +1,9 @@
+#root {
+  max-height: 100vh;
+  overflow: scroll;
+}
+
+.home {
+  max-height: 100vh;
+  overflow: hidden;
+}

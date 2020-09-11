@@ -10,6 +10,7 @@ import { useStateValue } from "../StateProvider";
 import { actionTypes } from "../reducer";
 
 function Search({ hideButtons, term = "" }) {
+  // eslint-disable-next-line
   const [{}, dispatch] = useStateValue();
   const [searchQuery, setSearchQuery] = useState(term);
 
